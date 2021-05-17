@@ -1,0 +1,615 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<title>关键字搜索</title>
+<style>
+div.box {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    background: #4cae4c;
+
+}
+div.title {
+    margin: 5px;
+    border: 1px solid #ccc;
+    font-size: 100px;
+    float: top;
+}
+div.table {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    background: #2b542c;
+
+}
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    background: #3c763d;
+}
+
+
+</style>
+
+</head>
+<body background="http://www.demo.amitjakhu.com/login-form/images/bg.png">
+
+<div class="box">
+    <div class="title">SNOWNLP</div>
+
+
+<div style="float: left" class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test.png" %}">
+            {% load static %}
+          <img src="{% static "images/test.png" %}" alt="所有评论">
+        </a>
+        <div class="desc">所有评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive.png" %}" alt="积极评论">
+        </a>
+        <div class="desc">积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative.png" %}" alt="中性评论" >
+        </a>
+        <div class="desc">中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_com.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_com.png" %}" alt="本日评论">
+        </a>
+        <div class="desc">本日评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_com.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_com.png" %}" alt="本日积极评论">
+        </a>
+        <div class="desc">本日积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_com.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_com.png" %}" alt="本日中性评论">
+        </a>
+        <div class="desc">本日中性评论</div>
+      </div>
+    </div>
+</div>
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_week.png" %}" alt="本周评论">
+        </a>
+        <div class="desc">本周评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_week.png" %}" alt="本周积极评论">
+        </a>
+        <div class="desc">本周积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_week.png" %}" alt="本周中性评论">
+        </a>
+        <div class="desc">本周中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_moonth.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_month.png" %}" alt="本月评论">
+        </a>
+        <div class="desc">本月评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_month.png" %}" alt="本月积极评论">
+        </a>
+        <div class="desc">本月积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_month.png" %}" alt="本月中性评论">
+        </a>
+        <div class="desc">本月中性评论</div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+<div class="box">
+    <div class="title">JIAGU</div>
+
+
+<div style="float: left" class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test.png" %}">
+            {% load static %}
+          <img src="{% static "images/test.png" %}" alt="所有评论">
+        </a>
+        <div class="desc">所有评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_jiagu.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_jiagu.png" %}" alt="积极评论">
+        </a>
+        <div class="desc">积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_jiagu.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_jiagu.png" %}" alt="中性评论" >
+        </a>
+        <div class="desc">中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_jiagu_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_jiagu_day.png" %}" alt="本日评论">
+        </a>
+        <div class="desc">本日评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_jiagu_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_jiagu_day.png" %}" alt="本日积极评论">
+        </a>
+        <div class="desc">本日积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_jiagu_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_jiagu_day.png" %}" alt="本日中性评论">
+        </a>
+        <div class="desc">本日中性评论</div>
+      </div>
+    </div>
+</div>
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_jiagu_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_jiagu_week.png" %}" alt="本周评论">
+        </a>
+        <div class="desc">本周评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_jiagu_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_jiagu_week.png" %}" alt="本周积极评论">
+        </a>
+        <div class="desc">本周积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_jiagu_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_jiagu_week.png" %}" alt="本周中性评论">
+        </a>
+        <div class="desc">本周中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_jiagu_moonth.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_jiagu_month.png" %}" alt="本月评论">
+        </a>
+        <div class="desc">本月评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_jiagu_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_jiagu_month.png" %}" alt="本月积极评论">
+        </a>
+        <div class="desc">本月积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_jiagu_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_jiagu_month.png" %}" alt="本月中性评论">
+        </a>
+        <div class="desc">本月中性评论</div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+<div class="box">
+    <div class="title">SENTI</div>
+
+
+<div style="float: left" class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test.png" %}">
+            {% load static %}
+          <img src="{% static "images/test.png" %}" alt="所有评论">
+        </a>
+        <div class="desc">所有评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_senti.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_senti.png" %}" alt="积极评论">
+        </a>
+        <div class="desc">积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_senti.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_senti.png" %}" alt="中性评论" >
+        </a>
+        <div class="desc">中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_senti_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_senti_day.png" %}" alt="本日评论">
+        </a>
+        <div class="desc">本日评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_senti_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_senti_day.png" %}" alt="本日积极评论">
+        </a>
+        <div class="desc">本日积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_senti_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_senti_day.png" %}" alt="本日中性评论">
+        </a>
+        <div class="desc">本日中性评论</div>
+      </div>
+    </div>
+</div>
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_senti_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_senti_week.png" %}" alt="本周评论">
+        </a>
+        <div class="desc">本周评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_senti_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_senti_week.png" %}" alt="本周积极评论">
+        </a>
+        <div class="desc">本周积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_senti_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_senti_week.png" %}" alt="本周中性评论">
+        </a>
+        <div class="desc">本周中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_senti_moonth.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_senti_month.png" %}" alt="本月评论">
+        </a>
+        <div class="desc">本月评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_senti_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_senti_month.png" %}" alt="本月积极评论">
+        </a>
+        <div class="desc">本月积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_senti_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_senti_month.png" %}" alt="本月中性评论">
+        </a>
+        <div class="desc">本月中性评论</div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+{#cemotion效率太低#}
+<{% comment %}div class="box">
+    <div class="title">CEMOTION</div>
+
+
+<div style="float: left" class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test.png" %}">
+            {% load static %}
+          <img src="{% static "images/test.png" %}" alt="所有评论">
+        </a>
+        <div class="desc">所有评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_cemotion.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_cemotion.png" %}" alt="积极评论">
+        </a>
+        <div class="desc">积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_cemotion.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_cemotion.png" %}" alt="中性评论" >
+        </a>
+        <div class="desc">中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_cemotion_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_cemotion_day.png" %}" alt="本日评论">
+        </a>
+        <div class="desc">本日评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_cemotion_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_cemotion_day.png" %}" alt="本日积极评论">
+        </a>
+        <div class="desc">本日积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_cemotion_day.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_cemotion_day.png" %}" alt="本日中性评论">
+        </a>
+        <div class="desc">本日中性评论</div>
+      </div>
+    </div>
+</div>
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_cemotion_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_cemotion_week.png" %}" alt="本周评论">
+        </a>
+        <div class="desc">本周评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_cemotion_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_cemotion_week.png" %}" alt="本周积极评论">
+        </a>
+        <div class="desc">本周积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_cemotion_week.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_cemotion_week.png" %}" alt="本周中性评论">
+        </a>
+        <div class="desc">本周中性评论</div>
+      </div>
+    </div>
+</div>
+
+
+<div style="float: left; " class="table">
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/test_cemotion_moonth.png" %}">
+            {% load static %}
+          <img src="{% static "images/test_cemotion_month.png" %}" alt="本月评论">
+        </a>
+        <div class="desc">本月评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/positive_cemotion_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/positive_cemotion_month.png" %}" alt="本月积极评论">
+        </a>
+        <div class="desc">本月积极评论</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+        <a target="_blank" href="{% static "images/negative_cemotion_month.png" %}">
+            {% load static %}
+          <img src="{% static "images/negative_cemotion_month.png" %}" alt="本月中性评论">
+        </a>
+        <div class="desc">本月中性评论</div>
+      </div>
+    </div>
+</div>
+</div>{% endcomment %}
+</body>
+</html>

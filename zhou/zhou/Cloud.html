@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
+
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="/{{ "test.png" }}">
+      <img src="/{{%static "test.png" %}}" alt="所有评论" width="300" height="200">
+    </a>
+    <div class="desc">所有评论</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="C:\Users\Administrator\zhou\positive.png">
+        {% load static %}
+      <img src=".C:\Users\Administrator\zhou\positive.png" alt="积极评论" width="300" height="200">
+    </a>
+    <div class="desc">积极评论</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="{% static "images/negative.png" %}">
+        {% load static %}
+      <img src="{% static "images/negative.png" %}" alt="runoob-logo">
+    </a>
+    <div class="desc">消极评论</div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
