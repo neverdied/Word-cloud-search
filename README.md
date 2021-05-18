@@ -4,7 +4,7 @@
 
 ![词云搜索搜索框](http://39.99.172.143/img/%E8%AF%8D%E4%BA%91%E6%90%9C%E7%B4%A21.png)
 
-[![词云搜索结果框](http://39.99.172.143/img/%E8%AF%8D%E4%BA%91%E6%90%9C%E7%B4%A2.png)](http://39.99.172.143/img/%E8%AF%8D%E4%BA%91%E6%90%9C%E7%B4%A2.png)
+[![词云搜索结果框](http://39.99.172.143/img/%E8%AF%8D%E4%BA%91%E6%90%9C%E7%B4%A23.png)](http://39.99.172.143/img/%E8%AF%8D%E4%BA%91%E6%90%9C%E7%B4%A2.png)
 
 网址：[我的个人网站](https://zhouxinwen.top/)
 
