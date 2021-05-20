@@ -1,8 +1,3 @@
-from cnsenti import Sentiment
+import snownlp
 
-senti = Sentiment()
-test_text= '没有前途'
-result = senti.sentiment_count(test_text)
-print(result)
-
-
+print(snownlp.SnowNLP(u'做个人吧').sentiments)

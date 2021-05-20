@@ -6,25 +6,39 @@ import snownlp
 from baiduspider import BaiduSpider
 import jiagu
 from cnsenti import Sentiment
+import imageio
+zhezhao=imageio.imread('1.png')
+
 # from cemotion import Cemotion
 
 
 
-
 # 表单
+from wordcloud import get_single_color_func
+
+
 def search_form(request):
     return render(request, 'search_form.html')
- 
+
+
+
 # 接收请求数据
-def search(request):  
+def search(request):
+
     request.encoding='utf-8'
     if 'q' in request.GET and request.GET['q']:
+        spider = BaiduSpider()
+
+
+        import imageio
+        zhezhao = imageio.imread('1.png')  # 用imageio替代目前已经移除image的scipy库
+
+
+
 
 
 
         from wordcloud import STOPWORDS
-
-        spider = BaiduSpider()
 
         # 搜索网页
         keyword = request.GET['q']
@@ -39,6 +53,8 @@ def search(request):
         test_list6 = spider.search_web(query=keyword, pn=7)
         test_list7 = spider.search_web(query=keyword, pn=8)
 
+
+
         txt_j0 = jieba.lcut(test_list0.__str__())
         txt_j1 = jieba.lcut(test_list1.__str__())
         txt_j2 = jieba.lcut(test_list2.__str__())
@@ -47,7 +63,9 @@ def search(request):
         txt_j5 = jieba.lcut(test_list5.__str__())
         txt_j6 = jieba.lcut(test_list6.__str__())
         txt_j7 = jieba.lcut(test_list7.__str__())
-        txt_j = txt_j0+txt_j1+txt_j2+txt_j3+txt_j4+txt_j5+txt_j6+txt_j7
+        txt_j = txt_j0 + txt_j1 + txt_j2 + txt_j3 + txt_j4 + txt_j5 + txt_j6 + txt_j7
+
+
 
         # 搜索普通网页
 
@@ -176,22 +194,34 @@ def search(request):
 
 
         #生成词库词云
-
-        w=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w1=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w2=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w = wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w1=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w2=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
         w.generate(test_str)
+
+
         w1.generate(positive)
         w2.generate(negative)
+
+
+        w.to_file('statics/images/test.png')
         w1.to_file('statics/images/positive.png')
         w2.to_file('statics/images/negative.png')
-        w.to_file('statics/images/test.png')
+
 
         #生成普通网站词云
         w3=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w4=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w5=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w4=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w5=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
         w3.generate(test_day_str)
         w4.generate(positive_com)
@@ -204,8 +234,12 @@ def search(request):
 
         #生成本周网站词云
         w6=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w7=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w8=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w7=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w8=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
         w6.generate(test_week_str)
         w7.generate(positive_week)
@@ -216,8 +250,12 @@ def search(request):
 
         #生成本月网站词云
         w9=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w10=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w11=wordcloud.WordCloud(width=1000,height=1000,font_path='msyh.ttc',stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w10=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
+        w11=wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",stopwords=['time','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z','related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
         w9.generate(test_month_str)
         w10.generate(positive_month)
@@ -285,18 +323,18 @@ def search(request):
 
         # 生成词库词云
 
-        w20 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
-                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
-                                             'm',
-                                             'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www', 'baidu',
-                                             'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des', 'result',
-                                             'Copyright', 'None', 'origin'])
-        w21 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w20 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                  width=1000, height=700, background_color='white', mode='RGBA',color_func=lambda *args, **kwargs: "red")
+        w21 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w22 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w22 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related',
                                              'www', 'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result',
@@ -307,7 +345,7 @@ def search(request):
         w22.generate(negative_jiagu)
         w21.to_file('statics/images/positive_jiagu.png')
         w22.to_file('statics/images/negative_jiagu.png')
-        w20.to_file('statics/images/test.png')
+
 
         # 生成普通网站词云
         w23 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
@@ -315,12 +353,16 @@ def search(request):
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w24 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w24 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w25 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w25 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related',
                                              'www', 'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result',
@@ -339,12 +381,16 @@ def search(request):
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w27 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w27 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w28 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w28 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related',
                                              'www', 'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result',
@@ -363,12 +409,16 @@ def search(request):
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w30 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w30 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                              'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                              'result', 'Copyright', 'None', 'origin'])
-        w31 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w31 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                              'related', 'www', 'baidu', 'com', 'http', 'url', 'type', 'title', 'link',
@@ -452,10 +502,14 @@ def search(request):
                                            'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www', 'baidu',
                                            'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des', 'result',
                                            'Copyright', 'None', 'origin'])
-        w61 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w61 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w62 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w62 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
@@ -464,7 +518,7 @@ def search(request):
         w62.generate(negative_senti)
         w61.to_file('statics/images/positive_senti.png')
         w62.to_file('statics/images/negative_senti.png')
-        w60.to_file('statics/images/test.png')
+
 
         # 生成普通网站词云
         w63 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
@@ -472,10 +526,14 @@ def search(request):
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                             'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                             'result', 'Copyright', 'None', 'origin'])
-        w64 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w64 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w65 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w65 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
@@ -492,10 +550,14 @@ def search(request):
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                             'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                             'result', 'Copyright', 'None', 'origin'])
-        w67 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w67 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w68 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w68 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                  stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
 
@@ -512,10 +574,14 @@ def search(request):
                                             'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'www',
                                             'baidu', 'com', 'http', 'url', 'type', 'title', 'link', 'result', 'des',
                                             'result', 'Copyright', 'None', 'origin'])
-        w70 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w70 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "blue",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])
-        w71 = wordcloud.WordCloud(width=1000, height=1000, font_path='msyh.ttc',
+        w71 = wordcloud.WordCloud(font_path='msyh.ttc', mask=zhezhao, \
+                                width=1000, height=1000, background_color='black', mode='RGBA',
+                                color_func=lambda *args, **kwargs: "red",
                                   stopwords=['time', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n',
                                              'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                              'related','www','baidu','com','http','url','type','title','link','result','des','result','Copyright','None','origin'])

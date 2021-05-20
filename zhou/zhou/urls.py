@@ -22,7 +22,7 @@ urlpatterns = [
     
     url(r'^search/Cloud/$', views.cloud),
   #  url(r'^testdb/$', testdb.testdb),
-    url(r'^search-form/$', search.search_form),
+    url(r'^$', search.search_form),
     url(r'^search/$', search.search),
-    url(r'^$', views.hello),
+    # url(r'^$', views.hello),
 ]
